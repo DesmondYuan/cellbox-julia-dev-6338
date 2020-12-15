@@ -26,7 +26,7 @@ function f(du, u, p, t, envelope=tanh)
     μ = view(u, (NUM_NODES+1):2*NUM_NODES)
     α = view(p, :, 1)
     w = view(p, :, 2:NUM_NODES+1)
-    du .= vcat(envelope.(w*x-μ) - α.*x, μ)
+    du[1:NUM_NODES] .= envelope.(w*x-μ) - α.*x
 end
 
 function plot_ode(params, u0=u0, f=f, ode_gold=nothing, label="û (t)", plot_ts=0.:10)
@@ -112,7 +112,6 @@ function ode_loss_cond(i, tp)
     l2_loss(_sol.u, sol_golds[i].u)
 end
 
-# function ode_loss(tp=ts, idx=1:NUM_CONDITIONS)
 function ode_loss(tp=ts, idx=BATCH_SIZE)
     if length(idx) == 1
         idx = rand(1:NUM_CONDITIONS, BATCH_SIZE)
