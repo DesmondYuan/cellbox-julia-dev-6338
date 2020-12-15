@@ -42,6 +42,7 @@ function f(du, u, p, t, envelope=tanh)
     α = view(p, :, 1)
     w = view(p, :, 2:NUM_NODES+1)
     du[1:NUM_NODES] .= envelope.(w*x-μ) - α.*x
+    du[NUM_NODES+1:end] .= 0
 end
 
 function plot_ode(params, u0=u0, f=f, ode_gold=nothing, label="û (t)", plot_ts=0.:10)
