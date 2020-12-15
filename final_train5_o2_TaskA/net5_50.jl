@@ -98,7 +98,7 @@ function cb!()
     if counter%LISTENING_FREQ == 0
         plot_ode(w, conditions[2, :], f, ode_golds[2], "$(EXPR_NAME): û (t) for iteration: $(counter)", ts)
         savefig("figures/$(FILEHEADER)_train_iter_$(counter).png")
-        plot_ode(w, conditions[NUM_CONDITIONS+10, :], f, ode_golds[NUM_CONDITIONS+10], "$(EXPR_NAME): û (t) for iteration: $(counter)", ts)
+        plot_ode(w, conditions[NUM_CONDITIONS+2, :], f, ode_golds[NUM_CONDITIONS+2], "$(EXPR_NAME): û (t) for iteration: $(counter)", ts)
         savefig("figures/$(FILEHEADER)_test_iter_$(counter).png")
         # save params
         CSV.write("results/$(FILEHEADER)_params_iter_$(counter).csv", DataFrame(w))
@@ -145,7 +145,7 @@ PATH_DIR = "$(PATH_DIR)/$(GRID_NAME)"
 # EXPR_NAME = "Baseline_DAG20"
 # NUM_NODES = 20
 # NUM_CONDITIONS = 64
-NUM_CONDITIONS_TEST = 32
+NUM_CONDITIONS_TEST = 8
 
 BATCH_SIZE = 8
 NUM_ITERATIONS = 1000
