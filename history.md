@@ -4,20 +4,20 @@
 
 1. **A** quantity test [FIX network:acyclic, kernel:tanh, time_steps:5, solver:Tsit5, ]
     * network_size [5, 50, 10, 100, 20] x num_samples [64, 128, 256, 1024] x 7 seeds
-        * 5 x 4 = 120
+        * 5 x 4 = 20 (Part I-III: 8 + 8 + 4)
         * => add one round of learning rates? <HOLD after B1>
         * => pick some sweet spots => ETA per run
 
 2. **B1** for sweet spots [FIX network_size(sweet) and num_samples(sweet)]
     * **B1a** no. of ODE time points [1, 5, 10, 40] +. 1!
-        * => picked 2m x 4n x 4nT = 32 (Part I + II)
+        * => picked 2m x 2n x 4nT = 16 (Part I-II: 8 + 8)
 
-    * **B2b** network types (cyclic, acyclic, bifurication, multi-furication, oscillation)
+    * **B1b** network types (cyclic, acyclic, bifurication, multi-furication, oscillation)
         * [5x or 4x if osc==cyc]
-        * <TODO> it is indeed </TODO>
+            * `<TODO>` it is indeed `</TODO>`
         * => do 1m x 3n x nT[1, 10?/40?] x [cyclic, acyclic, and bifurication] x [Tsit5, RK4, Euler]
             * = 1 x 3 x 2 x 3 x 3 = 54
-    * **B3c** solvers Tsit5, RK4, Euler [3x]
+    * **B1c** solvers Tsit5, RK4, Euler [3x]
 
 
 3. **B2** Quantity test [FIX network_size(sweet) + num_samples(sweet) + ode_time_steps(sweet) + ode_solver(sweet))
@@ -27,7 +27,7 @@
 4. **C** Kernel choice [FIX network_size(sweet) + num_samples(almost max) + ode_time_steps(sweet) + ode_solver(sweet)]
     * cross-train with sufficient data points
     * kernels: relu, tanh, polynomial (3 x 3 = 9)
-        * <TODO>
+        * `<TODO>`
 
 5. **D** Network stability
     * from A, B1 and B2
