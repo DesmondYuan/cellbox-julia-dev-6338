@@ -156,7 +156,7 @@ TOLERANCE = 1e-4
 
 LEARNING_RATE = 0.1
 LEARNING_RATE_DECAY = 2e-3
-L2_LAMBDA = 1e-1
+L2_LAMBDA = 3e-8
 
 
 # Main
@@ -186,7 +186,7 @@ for nT in [1, 40]
 
                     # Generate ground truth
                     Random.seed!(SEED)
-                    w_gold = gen_network(NUM_NODES, (0, 1.), 0.8, true)
+                    w_gold = gen_network(NUM_NODES, (0, 1e3), 0.8, false, false)
                     CSV.write("results/$(FILEHEADER)_params_ground_truth.csv", DataFrame(w_gold))
 
                     dt = 2.
