@@ -12,29 +12,29 @@ using Distributed; nworkers()  # use 8 for 12 core O2
 ENV["GKSwstype"] = "nul" # original 100
 
 
-function gen_network(m, weight_params=(0.,1.), sparsity=0., acyclic=false, )
+function gen_network_dev(m, weight_params=(0.,1.), sparsity=0.,
+                    acyclic=false, symmetric=false)
     w = rand(Normal(weight_params[1], weight_params[2]), (m, m))
     items = [0, 1]
     p = [sparsity, 1-sparsity]
     mask = sample(items, weights(p), (m,m), replace=true)
     w .*= mask
+    @assert acyclic * symmetric != true
     if acyclic
         for i in 1:m
             w[i, i:end] .= 0
         end
     end
-    α = abs.(rand(m) * 0.5 + 1)
+    if symmetric
+        for i in 1:m
+            w[i, i:end] .= w[i:end, i]
+        end
+    end
+
+    α = abs.(rand(m) * 0.2 .+ 0.9)
     return hcat(α, w)
 end
 
-function f(du, u, p, t, envelope=tanh)
-    # u = x + μ
-    x = view(u, 1:NUM_NODES)
-    μ = view(u, (NUM_NODES+1):2*NUM_NODES)
-    α = view(p, :, 1)
-    w = view(p, :, 2:NUM_NODES+1)
-    du[1:NUM_NODES] .= envelope.(w*x-μ) - α.*x
-end
 
 function plot_ode(params, u0=u0, f=f, ode_gold=nothing, label="û (t)", plot_ts=0.:10)
     # variables = xμ + w
