@@ -139,7 +139,7 @@ end
 
 
 # Setup
-PATH_DIR = "/n/data1/hms/cellbio/sander/bo/julia/final"
+PATH_DIR = "/n/data1/hms/cellbio/sander/bo/julia/final_github"
 GRID_NAME = "network_data_size"
 PATH_DIR = "$(PATH_DIR)/$(GRID_NAME)"
 # EXPR_NAME = "Baseline_DAG20"
