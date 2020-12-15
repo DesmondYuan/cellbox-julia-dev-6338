@@ -125,7 +125,7 @@ function ode_loss(tp=ts, idx=BATCH_SIZE)
     end
     # estimation_loss = [ode_loss_cond(i, tp) for i in 1:NUM_CONDITIONS]
     estimation_loss = mean(ode_loss_cond(i, tp) for i in idx)
-    regularization_loss = L2_LAMBDA*mean(abs, w)
+    regularization_loss = L2_LAMBDA*mean(abs2, w)
     total_loss = estimation_loss + regularization_loss
     return [estimation_loss regularization_loss total_loss]
 
