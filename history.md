@@ -70,8 +70,8 @@ sbatch run_large.sh final_train5_o2_TaskA/net200.jl
 # sbatch run_large.sh final_train5_o2_TaskB/ts1_40.jl  # 36 in total
 # sbatch run_large.sh final_train5_o2_TaskB/ts5_10.jl  # 24 in total
 # changed to separated by seed
-sbatch run_large.sh final_train5_o2_TaskB/ts)all_seed01.jl  # 120 in total
-sbatch run_large.sh final_train5_o2_TaskB/ts)all_seed23.jl  # 120 in total
-sbatch run_large.sh final_train5_o2_TaskB/ts)all_seed45.jl  # 120 in total
+sbatch run_large.sh final_train5_o2_TaskB/ts_all_seed01.jl  # 120 in total
+sbatch run_large.sh final_train5_o2_TaskB/ts_all_seed23.jl  # 120 in total
+sbatch run_large.sh final_train5_o2_TaskB/ts_all_seed45.jl  # 120 in total
 
 ```
