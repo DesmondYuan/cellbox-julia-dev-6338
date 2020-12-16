@@ -2,14 +2,14 @@
 
 * using 7 seeds each (1 - 25 mins/seed => 10min - 3.5hr per run)
 
-1. **A** quantity test [FIX network:acyclic, kernel:tanh, time_steps:5, solver:Tsit5, ]
+1. **A** `ongoing` quantity test [FIX network:acyclic, kernel:tanh, time_steps:5, solver:Tsit5, ]
     * network_size [5, 50, 10, 100, 20] x num_samples [64, 128, 256, 1024] x 7 seeds
         * 5 x 4 = 20 (Part I-III: 8 + 8 + 4)
         * => add one round of learning rates? <HOLD after B1>
         * => pick some sweet spots => ETA per run
 
 2. **B1** for sweet spots [FIX network_size(sweet) and num_samples(sweet)]
-    * **B1a** no. of ODE time points [1, 5, 10, 40] +. 1!
+    * **B1a** `ongoing` no. of ODE time points [1, 5, 10, 40] +. 1!
         * => picked 2m x 2n x 4nT = 16 (Part I-II: 8 + 8)
 
     * **B1b** network types (cyclic, acyclic, bifurication, multi-furication, oscillation)
@@ -18,7 +18,6 @@
         * => do 1m x 3n x nT[1, 10?/40?] x [cyclic, acyclic, and bifurication] x [Tsit5, RK4, Euler]
             * = 1 x 3 x 2 x 3 x 3 = 54
     * **B1c** solvers Tsit5, RK4, Euler [3x]
-
 
 3. **B2** Quantity test [FIX network_size(sweet) + num_samples(sweet) + ode_time_steps(sweet) + ode_solver(sweet))
     * **B2a** with Gaussian noise [0, 1e-4, 1e-3, 1e-2, 1e-1, 1e+0, 1e+1]
