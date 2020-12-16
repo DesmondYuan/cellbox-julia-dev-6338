@@ -54,10 +54,24 @@ sbatch run_large.sh final_train5_o2_TaskB/ts1_40.jl
 sbatch run_large.sh final_train5_o2_TaskB/ts5_10.jl
 
 ```
-* **[2020-12-16] Task A Round1: [64, 128, 256, 1024] nearly finished and all look great, so running with Round2: [8, 16, 32] + m=200 (note L2_LAMBDA is not fixed on purpose for consistency)**
+* **[2020-12-15 midnight] Task A Round1: [64, 128, 256, 1024] nearly finished and all look great, so running with Round2: [8, 16, 32] + m=200 (note L2_LAMBDA is not fixed on purpose for consistency)**
+* **[2020-12-15 midnight] Task B1 nearly finished**
 ```
 sbatch run_large.sh final_train5_o2_TaskA/net5_50.jl
 sbatch run_large.sh final_train5_o2_TaskA/net10_20.jl
 sbatch run_large.sh final_train5_o2_TaskA/net100.jl
 sbatch run_large.sh final_train5_o2_TaskA/net200.jl
+```
+* **[2020-12-16] Task B1 finished**
+* **[2020-12-16] Task A Round1: n[64, 128, 256, 1024] + m[20, 50] but nT was not working, so running with Round 2: nT = [5, 10, 20] n[8, 32, 64, 128, 256, 1024] + m[10, 20] (note m is reduced for faster training). And the round2 are reformatted for different seeds.**
+
+```
+# 5min x (36+24) x 7seeds = 420
+# sbatch run_large.sh final_train5_o2_TaskB/ts1_40.jl  # 36 in total
+# sbatch run_large.sh final_train5_o2_TaskB/ts5_10.jl  # 24 in total
+# changed to separated by seed
+sbatch run_large.sh final_train5_o2_TaskB/ts)all_seed01.jl  # 120 in total
+sbatch run_large.sh final_train5_o2_TaskB/ts)all_seed23.jl  # 120 in total
+sbatch run_large.sh final_train5_o2_TaskB/ts)all_seed45.jl  # 120 in total
+
 ```

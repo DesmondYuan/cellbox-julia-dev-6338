@@ -3,6 +3,8 @@
 <----------------------------------------------------------------------------->
 Grid EXPR_B1: ODE nT
 Part I: nT = [5, 10]
+Round 1: n[64, 128, 256, 1024] + m[20, 50]
+Round 2: nT = [5, 10, 20] n[8, 32, 64, 128, 256, 1024] + m[10, 20]
 <----------------------------------------------------------------------------->
 """
 
@@ -169,15 +171,15 @@ L2_LAMBDA = 3e-8
 
 
 # Main
-for nT in [5, 10]
+for nT in [5, 10, 20]
     global ts
     dt = 10/nT
     ts = 0:dt:10
-    for n in [64, 128, 256, 1024]
+    for n in [8, 32, 64, 128, 256, 1024]
         global NUM_CONDITIONS
         NUM_CONDITIONS = n
 
-        for m in [20, 50]
+        for m in [10, 20]
             global EXPR_NAME, NUM_NODES
             EXPR_NAME = "ODESteps_DAG$(m)_nT$(nT)_n$(n)"
             NUM_NODES = m
@@ -198,8 +200,6 @@ for nT in [5, 10]
                     w_gold = gen_network(NUM_NODES, (0, 1e3), 0.8, false, false)
                     CSV.write("results/$(FILEHEADER)_params_ground_truth.csv", DataFrame(w_gold))
 
-                    dt = 2.
-                    ts = 0.:dt:10
                     conditions, sol_golds, ode_golds = get_data(w_gold, NUM_CONDITIONS+NUM_CONDITIONS_TEST)
 
                     # Training

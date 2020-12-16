@@ -2,10 +2,10 @@
 """
 <----------------------------------------------------------------------------->
 Grid EXPR_B1: ODE nT
-Part II: nT = [1, 40]
+Part I: nT = [5, 10]
 Round 1: n[64, 128, 256, 1024] + m[20, 50]
-Round 2: n[8, 32, 64, 128, 256, 1024] + m[10, 20]
-
+Round 2: nT = [5, 10, 20] n[8, 32, 64, 128, 256, 1024] + m[10, 20]
+    => changed to separation by differnent seeds
 <----------------------------------------------------------------------------->
 """
 
@@ -152,7 +152,7 @@ end
 
 # Setup
 PATH_DIR = "/n/data1/hms/cellbio/sander/bo/julia/final_github"
-GRID_NAME = "ODE_steps"
+GRID_NAME = "ODE_steps_round_2"
 PATH_DIR = "$(PATH_DIR)/$(GRID_NAME)"
 # EXPR_NAME = "Baseline_DAG20"
 # NUM_NODES = 20
@@ -172,7 +172,7 @@ L2_LAMBDA = 3e-8
 
 
 # Main
-for nT in [1, 40]
+for nT in [1, 5, 10, 20, 40]
     global ts
     dt = 10/nT
     ts = 0:dt:10
@@ -185,7 +185,7 @@ for nT in [1, 40]
             EXPR_NAME = "ODESteps_DAG$(m)_nT$(nT)_n$(n)"
             NUM_NODES = m
 
-            for i in 0:6
+            for i in 4:5
                 t = @elapsed begin
                     global SEED, PATH, FILEHEADER, NUM_NODES, NUM_CONDITIONS
                     global w_gold, ts, conditions, sol_golds, ode_golds,
