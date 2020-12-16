@@ -54,3 +54,10 @@ sbatch run_large.sh final_train5_o2_TaskB/ts1_40.jl
 sbatch run_large.sh final_train5_o2_TaskB/ts5_10.jl
 
 ```
+* **[2020-12-16] Task A Round1: [64, 128, 256, 1024] nearly finished and all look great, so running with Round2: [8, 16, 32] + m=200 (note L2_LAMBDA is not fixed on purpose for consistency)**
+```
+sbatch run_large.sh final_train5_o2_TaskA/net5_50.jl
+sbatch run_large.sh final_train5_o2_TaskA/net10_20.jl
+sbatch run_large.sh final_train5_o2_TaskA/net100.jl
+sbatch run_large.sh final_train5_o2_TaskA/net200.jl
+```

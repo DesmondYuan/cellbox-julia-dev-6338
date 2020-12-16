@@ -1,11 +1,9 @@
 
 """
 <----------------------------------------------------------------------------->
-Grid EXPR_A (part II: m = [10, 20])
-Round1: [64, 128, 256, 1024]
-Round2: [8, 16, 32]
-
-
+Grid EXPR_A (part IIII: m = [200])
+Round2: [8, 16, 64, 256]
+<----------------------------------------------------------------------------->
 """
 
 @time using Random, CSV, DataFrames, Distributions, StatsBase, Plots, DelimitedFiles, Distributed  # 240s -> 60s
@@ -171,11 +169,11 @@ L2_LAMBDA = 3e-8
 
 
 # Main
-for n in [8, 16, 32]
+for n in [8, 16, 64, 256]
     global NUM_CONDITIONS
     NUM_CONDITIONS = n
 
-    for m in [10, 20]
+    for m in [200]
         global EXPR_NAME, NUM_NODES
         EXPR_NAME = "Scalability_DAG$(m)_n$(n)"
         NUM_NODES = m
