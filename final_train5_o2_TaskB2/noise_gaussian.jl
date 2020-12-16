@@ -178,13 +178,6 @@ L2_LAMBDA = 1e-4
 
 # Main
 for noise_level in [0, 0.1, 0.2, 0.5, 1.0, 3.0]
-    global noise_mask
-    # no noise
-    # noise_mask = ones(2*NUM_NODES , length(ts))
-    # Gaussian noise
-    noise_mask = randn((2*NUM_NODES , length(ts))) .* noise_level .+ 1
-    # dropout noise
-    # noise_mask = sample([0, 1], weights([noise_level, 1-noise_level]), (2*NUM_NODES , length(ts)), replace=true)
 
     for n in [32, 256]
         global NUM_CONDITIONS
@@ -194,6 +187,14 @@ for noise_level in [0, 0.1, 0.2, 0.5, 1.0, 3.0]
             global EXPR_NAME, NUM_NODES
             EXPR_NAME = "Gaussian_DAG$(m)_n$(n)_sigma$(noise_level)"
             NUM_NODES = m
+            
+            global noise_mask
+            # no noise
+            # noise_mask = ones(2*NUM_NODES , length(ts))
+            # Gaussian noise
+            noise_mask = randn((2*NUM_NODES , length(ts))) .* noise_level .+ 1
+            # dropout noise
+            # noise_mask = sample([0, 1], weights([noise_level, 1-noise_level]), (2*NUM_NODES , length(ts)), replace=true)
 
             for i in 0:6
                 t = @elapsed begin
