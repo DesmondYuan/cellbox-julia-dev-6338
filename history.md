@@ -12,12 +12,11 @@
     * **B1a** `ongoing` no. of ODE time points [1, 5, 10, 40] +. 1!
         * => picked 2m x 2n x 4nT = 16 (Part I-II: 8 + 8)
 
-    * **B1b** network types (cyclic, acyclic, bifurication, multi-furication, oscillation)
+    * **B1b** network types (cyclic, acyclic, bifurication, multi-furication, oscillation)  **x B1c** solvers Tsit5, RK4, Euler [3x]
         * [5x or 4x if osc==cyc]
             * `<TODO>` it is indeed `</TODO>`
         * => do 1m x 3n x nT[1, 10?/40?] x [cyclic, acyclic, and bifurication] x [Tsit5, RK4, Euler]
             * = 1 x 3 x 2 x 3 x 3 = 54
-    * **B1c** solvers Tsit5, RK4, Euler [3x]
 
 3. **B2** Quantity test [FIX network_size(sweet) + num_samples(sweet) + ode_time_steps(sweet) + ode_solver(sweet))
     * **B2a** with Gaussian noise [0, 1e-4, 1e-3, 1e-2, 1e-1, 1e+0, 1e+1]
@@ -70,8 +69,8 @@ sbatch run_large.sh final_train5_o2_TaskA/net200.jl
 # sbatch run_large.sh final_train5_o2_TaskB/ts1_40.jl  # 36 in total
 # sbatch run_large.sh final_train5_o2_TaskB/ts5_10.jl  # 24 in total
 # changed to separated by seed
-sbatch run_large.sh final_train5_o2_TaskB/ts_all_seed01.jl  # 120 in total
-sbatch run_large.sh final_train5_o2_TaskB/ts_all_seed23.jl  # 120 in total
-sbatch run_large.sh final_train5_o2_TaskB/ts_all_seed45.jl  # 120 in total
+sbatch run_mini.sh final_train5_o2_TaskB2/ts_all_seed01.jl  # 120 in total
+sbatch run_mini.sh final_train5_o2_TaskB2/ts_all_seed23.jl  # 120 in total
+sbatch run_mini.sh final_train5_o2_TaskB2/ts_all_seed45.jl  # 120 in total
 
 ```

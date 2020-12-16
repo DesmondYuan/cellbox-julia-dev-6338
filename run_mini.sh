@@ -1,6 +1,6 @@
 #!/bin/bash
-#SBATCH -p short                          #partition
-#SBATCH -t 0-3:00                        # time days-hr:min
+#SBATCH -p priority                          #partition
+#SBATCH -t 0-6:00                        # time days-hr:min
 #SBATCH -c 8                              # number of cores
 #SBATCH --mem=40G                          # memory per job (all cores), GB
 #SBATCH -o /n/data1/hms/cellbio/sander/bo/julia/slurm/%j.out                         # out file, %j would be your job id
