@@ -188,7 +188,6 @@ for noise_level in [0, 0.1, 0.2, 0.5, 0.8]
             NUM_NODES = m
 
             global noise_mask, ts
-            dt = 10/nT
             ts = 0:2:10.
             # no noise
             # noise_mask = ones(2*NUM_NODES , length(ts))
