@@ -187,8 +187,10 @@ for noise_level in [0, 0.1, 0.2, 0.5, 1.0, 3.0]
             global EXPR_NAME, NUM_NODES
             EXPR_NAME = "Gaussian_DAG$(m)_n$(n)_sigma$(noise_level)"
             NUM_NODES = m
-            
-            global noise_mask
+
+            global noise_mask, ts
+            dt = 10/nT
+            ts = 0:2:10.
             # no noise
             # noise_mask = ones(2*NUM_NODES , length(ts))
             # Gaussian noise
@@ -206,8 +208,6 @@ for noise_level in [0, 0.1, 0.2, 0.5, 1.0, 3.0]
                     FILEHEADER = "$(EXPR_NAME)_seed_$(SEED)"
                     [mkpath(p) for p in ["$(PATH)/figures", "$(PATH)/results"]]
                     cd(PATH)
-                    dt = 10/nT
-                    ts = 0:dt:10
 
                     # Generate ground truth
                     Random.seed!(SEED)
