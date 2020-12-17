@@ -62,8 +62,8 @@ function plot_ode(params, u0=u0, f=f, ode_gold=nothing, label="û (t)", plot_ts
     # variables = xμ + w
     global solver
     u_prob = ODEProblem((du,u,w,t) -> f(du,u,w,t,tanh), u0, (0., ts[end]), params)
-    u_sol = solve(u_prob, solver, tstops=ts[1]:0.01:ts[end])
-    sol_gold = solve(ode_gold, solver, tstops=ts[1]:0.01:ts[end])
+    u_sol = solve(u_prob, solver, tstops=ts[1]:0.1:ts[end])
+    sol_gold = solve(ode_gold, solver, tstops=ts[1]:0.1:ts[end])
     plot(u_sol.t, [x[3] for x in u_sol.u], label="x1_hat", color=RGB(0.4, 0.5, 0.8))
     plot!(u_sol.t, [x[2] for x in u_sol.u], label="x2_hat", color=RGB(0.4, 0.7, 0.5))
     plot!(u_sol.t, [x[4] for x in u_sol.u], label="x3_hat", color=RGB(0.9, 0.6, 0.6))
@@ -102,7 +102,7 @@ function get_data(w, n)
     for i in 1:n
         u0s[i, m+1:end] = conditions[:, i]
         probs[i] = ODEProblem((du,u,w,t) -> f(du,u,w,t,tanh), u0s[i, :], (ts[1], ts[end]), w_gold)
-        sol_golds[i] = solve(probs[i], solver, saveat=ts, tstops=ts[1]:0.01:ts[end])
+        sol_golds[i] = solve(probs[i], solver, saveat=ts, tstops=ts[1]:0.2:ts[end])
     end
     return u0s, sol_golds, probs
 end
@@ -143,7 +143,7 @@ end
 function ode_loss_cond(i, tp)
     global solver
     _prob = remake(ode_golds[i], p=w)
-    _sol = solve(_prob, solver, saveat=tp, tstops=ts[1]:0.01:ts[end])
+    _sol = solve(_prob, solver, saveat=tp, tstops=ts[1]:0.2:ts[end])
     l2_loss(_sol.u, sol_golds[i].u)
 end
 
@@ -197,7 +197,7 @@ for NETWORK_TYPE in ["cyclic"]
 
             for nT in [1, 10, 30]
                 dt = 20/nT
-                global ts = 0:dt:40
+                global ts = 0:dt:20
                 global EXPR_NAME = "Network_$(NETWORK_TYPE)_n$(n)_nT$(nT)_solver_$(SOLVER)"
 
                 for i in [23]
