@@ -10,18 +10,18 @@
     * Round 1 looks all good. Round 2: adding [8, 16, 32]
 
 2. **B1** for sweet spots [FIX network_size(sweet) and num_samples(sweet)]
-    * `nearly finished` no. of ODE time points [1, 5, 10, 40] +. 1!
+    * `finished` no. of ODE time points [1, 5, 10, 40] +. 1!
         * Round 1 => picked 2m x 2n x 4nT = 16 (Part I-II: 8 + 8), Round 1 has a critical bug and is `deprecated`.
         * Round 2 `nearly finished` `analysis in progress`
 
-3. **B2** `ongoing` Quantity test [FIX network_size(sweet) + num_samples(sweet) + ode_time_steps(sweet) + ode_solver(sweet))
+3. **B2** `finished` Quantity test [FIX network_size(sweet) + num_samples(sweet) + ode_time_steps(sweet) + ode_solver(sweet))
     * **B2a** with Gaussian noise [0, 1e-4, 1e-3, 1e-2, 1e-1, 1e+0, 1e+1]
     * **B2b** with dropout noise [0, 0.01, 0.05, 0.1, 0.2, 0.4, 0.6, 0.8]
 
-4. **B3a** network types (cyclic, acyclic, bifurication, multi-furication, oscillation)  **x B3b** solvers Tsit5, RK4, Euler [3x]
+4. **B3a** `finished` network types (cyclic, acyclic, bifurication, multi-furication, oscillation)  **x B3b** solvers Tsit5, RK4, Euler [3x]
     * [5x or 4x if osc==cyc]
         * `<TODO>` it is indeed with preliminary testing `<\TODO>` `finished`
-        * `<TODO>` bifurication?
+        * `<TODO>` bifurication? `<\TODO>` `finished`
     * ODE solvers efficiency
         ```
         ts = 0:0.2:10
@@ -115,6 +115,7 @@ sbatch run_large.sh "final_train5_o2_TaskB3/solvers_Tsit5&DP5_cyclic6.jl"  # 24 
 ```
 sbatch run_mini.sh "final_train5_o2_TaskB3/solvers_euler&RK4.jl"  # 144 in total
 sbatch run_mini.sh "final_train5_o2_TaskB3/solvers_Tsit5&DP5.jl"  # 144 in total
-sbatch run_large.sh "final_train5_o2_TaskB3/solvers_Tsit5&DP5_cyclic1.jl"  # 24 in total
-sbatch run_large.sh "final_train5_o2_TaskB3/solvers_Tsit5&DP5_cyclic2.jl"  # 24 in total
+sbatch run_large.sh "final_train5_o2_TaskB3/solvers_euler&RK4_cyclic1.jl"  # 24 in total
+sbatch run_large.sh "final_train5_o2_TaskB3/solvers_euler&RK4_cyclic2.jl"  # 24 in total
 ```
+* **[2020-12-17] All tasks A-B finished!**

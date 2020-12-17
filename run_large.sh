@@ -9,6 +9,6 @@ source ~/.bash_profile
 julia="/n/data1/hms/cellbio/sander/bo/julia/installation/julia-1.5.3/bin/julia"
 
 cd /n/data1/hms/cellbio/sander/bo/julia/cellbox-julia-dev-6338
-${julia} -p 8 ${1}
+${julia} -p 8 "${1}"
 
 # 20-30 min large job
