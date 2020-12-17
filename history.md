@@ -2,23 +2,26 @@
 
 * using 7 seeds each (1 - 25 mins/seed => 10min - 3.5hr per run)
 
-1. **A** `ongoing` quantity test [FIX network:acyclic, kernel:tanh, time_steps:5, solver:Tsit5, ]
+1. **A** `finished` `analyzed` quantity test [FIX network:acyclic, kernel:tanh, time_steps:5, solver:Tsit5, ]
     * network_size [5, 50, 10, 100, 20] x num_samples [64, 128, 256, 1024] x 7 seeds
         * 5 x 4 = 20 (Part I-III: 8 + 8 + 4)
         * => add one round of learning rates? <HOLD after B1>
-        * => pick some sweet spots => ETA per run
+        * => pick some sweet spots => ETA per run (Round 1)
+    * Round 1 looks all good. Round 2: adding [8, 16, 32]
 
 2. **B1** for sweet spots [FIX network_size(sweet) and num_samples(sweet)]
-    * **B1a** `ongoing` no. of ODE time points [1, 5, 10, 40] +. 1!
-        * => picked 2m x 2n x 4nT = 16 (Part I-II: 8 + 8)
+    * **B1a** `nearly finished` no. of ODE time points [1, 5, 10, 40] +. 1!
+        * Round 1 => picked 2m x 2n x 4nT = 16 (Part I-II: 8 + 8)
+        * Round 1 has a critical bug and is deprecated. Round 2 `nearly finished` `analysis in progress`
 
     * **B1b** network types (cyclic, acyclic, bifurication, multi-furication, oscillation)  **x B1c** solvers Tsit5, RK4, Euler [3x]
         * [5x or 4x if osc==cyc]
-            * `<TODO>` it is indeed `</TODO>`
+            * `<TODO>` it is indeed with preliminary testing `<\TODO>` `finished`
+            * `<TODO>` bifurication?
         * => do 1m x 3n x nT[1, 10?/40?] x [cyclic, acyclic, and bifurication] x [Tsit5, RK4, Euler]
             * = 1 x 3 x 2 x 3 x 3 = 54
 
-3. **B2** Quantity test [FIX network_size(sweet) + num_samples(sweet) + ode_time_steps(sweet) + ode_solver(sweet))
+3. **B2** `ongoing` Quantity test [FIX network_size(sweet) + num_samples(sweet) + ode_time_steps(sweet) + ode_solver(sweet))
     * **B2a** with Gaussian noise [0, 1e-4, 1e-3, 1e-2, 1e-1, 1e+0, 1e+1]
     * **B2b** with dropout noise [0, 0.01, 0.05, 0.1, 0.2, 0.4, 0.6, 0.8]
 
