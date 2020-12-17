@@ -190,7 +190,7 @@ L2_LAMBDA = 1e-4
 # Main
 for NETWORK_TYPE in ["cyclic"]
     global network_type = NETWORK_TYPE
-    for SOLVER in [Euler(), RK4(), Tsit5()]
+    for SOLVER in [Euler(), Tsit5(), DP5(), RK4()]
         global solver = SOLVER
         for n in [32, 256]
             global NUM_CONDITIONS = n
@@ -200,7 +200,7 @@ for NETWORK_TYPE in ["cyclic"]
                 global ts = 0:dt:20
                 global EXPR_NAME = "Network_$(NETWORK_TYPE)_n$(n)_nT$(nT)_solver_$(SOLVER)"
 
-                for i in [3]
+                for i in [18, 22, 23]
                     t = @elapsed begin
                         global SEED, PATH, FILEHEADER, NUM_NODES, NUM_CONDITIONS, noise_mask
                         global w_gold, ts, conditions, sol_golds, ode_golds,
