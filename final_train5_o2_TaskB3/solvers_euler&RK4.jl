@@ -78,6 +78,7 @@ function l2_loss(preds, golds)
     global noise_mask
     y = convert(Array, VectorOfArray(golds))
     y .*= noise_mask
+    y = y .* noise_mask
     x = convert(Array, VectorOfArray(preds))
     1/2 * mean(abs2, y-x)
 end
