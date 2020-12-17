@@ -16,7 +16,7 @@ Part II : 1 x 2 x 3 x 3 x [DP5, Tsit5] 2 = 36
 using Distributed; nworkers()  # use 8 for 12 core O2
 ENV["GKSwstype"] = "nul" # original 100
 
-function gen_network_dev(m, weight_params=(0.,1.), sparsity=0.,
+function gen_network(m, weight_params=(0.,1.), sparsity=0.,
                          speciality="acyclic")
     w = rand(Normal(weight_params[1], weight_params[2]), (m, m))
     items = [0, 1]
