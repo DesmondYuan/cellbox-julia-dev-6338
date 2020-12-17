@@ -210,7 +210,7 @@ for NETWORK_TYPE in ["cyclic", "acyclic", "bifurcating"]
 
                         # Generate ground truth
                         Random.seed!(SEED)
-                        w_gold = gen_network(NUM_NODES, (0, 1e3), 0.8, false, false)
+                        w_gold = gen_network(NUM_NODES, (0, 1e3), 0.8, network_type)
                         CSV.write("results/$(FILEHEADER)_params_ground_truth.csv", DataFrame(w_gold))
 
                         conditions, sol_golds, ode_golds = get_data(w_gold, NUM_CONDITIONS+NUM_CONDITIONS_TEST)
