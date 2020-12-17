@@ -97,3 +97,16 @@ sbatch run_mini.sh final_train5_o2_TaskB2/noise_gaussian.jl  # 120 in total
 sbatch run_mini.sh "final_train5_o2_TaskB3/solvers_euler&RK4.jl"  # 216 in total
 sbatch run_mini.sh "final_train5_o2_TaskB3/solvers_Tsit5&DP5.jl"  # 216 in total
 ```
+* **[2020-12-16 night] Task A round 2 finished**
+* **[2020-12-16 night] Task B2 finished**
+* **[2020-12-16] Task B3 takes too long because of the cyclic data**
+```
+sbatch run_mini.sh "final_train5_o2_TaskB3/solvers_euler&RK4.jl"  # 144 in total
+sbatch run_mini.sh "final_train5_o2_TaskB3/solvers_Tsit5&DP5.jl"  # 144 in total
+sbatch run_large.sh "final_train5_o2_TaskB3/solvers_Tsit5&DP5_cyclic1.jl"  # 24 in total
+sbatch run_large.sh "final_train5_o2_TaskB3/solvers_Tsit5&DP5_cyclic2.jl"  # 24 in total
+sbatch run_large.sh "final_train5_o2_TaskB3/solvers_Tsit5&DP5_cyclic3.jl"  # 24 in total
+sbatch run_large.sh "final_train5_o2_TaskB3/solvers_Tsit5&DP5_cyclic4.jl"  # 24 in total
+sbatch run_large.sh "final_train5_o2_TaskB3/solvers_Tsit5&DP5_cyclic5.jl"  # 24 in total
+sbatch run_large.sh "final_train5_o2_TaskB3/solvers_Tsit5&DP5_cyclic6.jl"  # 24 in total
+```
