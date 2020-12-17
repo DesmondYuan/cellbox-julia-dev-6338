@@ -94,6 +94,6 @@ sbatch run_mini.sh final_train5_o2_TaskB2/noise_gaussian.jl  # 120 in total
 ```
 * **[2020-12-16] Task B3 started**
 ```
-sbatch run_mini.sh final_train5_o2_TaskB3/solvers_euler&RK4.jl  # 216 in total
-sbatch run_mini.sh final_train5_o2_TaskB3/solvers_Tsit5&DP5.jl  # 216 in total
+sbatch run_mini.sh "final_train5_o2_TaskB3/solvers_euler&RK4.jl"  # 216 in total
+sbatch run_mini.sh "final_train5_o2_TaskB3/solvers_Tsit5&DP5.jl"  # 216 in total
 ```
