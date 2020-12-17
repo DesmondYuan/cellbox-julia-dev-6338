@@ -233,7 +233,8 @@ for NETWORK_TYPE in ["cyclic", "acyclic", "bifurcating"]
 
                     open("../$(GRID_NAME)_summary.csv", "a") do io
                        writedlm(io, [GRID_NAME EXPR_NAME NUM_NODES NUM_CONDITIONS SEED train_loss[1] train_loss[3] test_loss[1] test_loss[3] counter t], ",")
-                end
+                   end
+               end
             end
         end
     end
