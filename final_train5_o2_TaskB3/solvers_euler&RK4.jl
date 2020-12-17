@@ -194,7 +194,7 @@ for NETWORK_TYPE in ["cyclic", "acyclic", "bifurcating"]
             for nT in [1, 10, 30]
                 dt = 20/nT
                 global ts = 0:dt:40
-                EXPR_NAME = "Network_$(NETWORK_TYPE)_n$(n)_nT$(nT)_solver_$(SOLVER)"
+                global EXPR_NAME = "Network_$(NETWORK_TYPE)_n$(n)_nT$(nT)_solver_$(SOLVER)"
 
                 for i in [2, 3, 4, 18, 22, 23]
                     t = @elapsed begin
