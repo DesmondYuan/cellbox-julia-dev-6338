@@ -115,5 +115,6 @@ sbatch run_large.sh "final_train5_o2_TaskB3/solvers_Tsit5&DP5_cyclic6.jl"  # 24 
 ```
 sbatch run_mini.sh "final_train5_o2_TaskB3/solvers_euler&RK4.jl"  # 144 in total
 sbatch run_mini.sh "final_train5_o2_TaskB3/solvers_Tsit5&DP5.jl"  # 144 in total
-sbatch run_large.sh "final_train5_o2_TaskB3/solvers_Tsit5&DP5_cyclic.jl"  # 24 in total
+sbatch run_large.sh "final_train5_o2_TaskB3/solvers_Tsit5&DP5_cyclic1.jl"  # 24 in total
+sbatch run_large.sh "final_train5_o2_TaskB3/solvers_Tsit5&DP5_cyclic2.jl"  # 24 in total
 ```
