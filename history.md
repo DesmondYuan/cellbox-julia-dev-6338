@@ -119,3 +119,8 @@ sbatch run_large.sh "final_train5_o2_TaskB3/solvers_euler&RK4_cyclic1.jl"  # 24 
 sbatch run_large.sh "final_train5_o2_TaskB3/solvers_euler&RK4_cyclic2.jl"  # 24 in total
 ```
 * **[2020-12-17] All tasks A-B finished!**
+* **[2020-12-17] Bifurcative models were incomplete! Launching round 3...**
+```
+sbatch run_mini.sh "final_train5_o2_TaskB3/solvers_allsolvers_bifuricative1.jl"  
+sbatch run_mini.sh "final_train5_o2_TaskB3/solvers_allsolvers_bifuricative2.jl"  
+```
