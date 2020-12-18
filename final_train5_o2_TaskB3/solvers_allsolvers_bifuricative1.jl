@@ -172,7 +172,7 @@ end
 
 # Setup
 PATH_DIR = "/n/data1/hms/cellbio/sander/bo/julia/final_github"
-GRID_NAME = "SpecialNetworks"
+GRID_NAME = "SpecialNetworks_round_3"
 PATH_DIR = "$(PATH_DIR)/$(GRID_NAME)"
 NUM_NODES = 10
 # NUM_CONDITIONS = 64
