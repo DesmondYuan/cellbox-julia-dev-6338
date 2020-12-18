@@ -3,14 +3,14 @@
 <----------------------------------------------------------------------------->
 Grid EXPR_B3
 m[10] x n[32, 256] x nT[1, 10, 30] x
-    [cyclic, acyclic, bifurication] x [Tsit5, Euler, DP5, RK4]
+    [cyclic, acyclic, bifurcative] x [Tsit5, Euler, DP5, RK4]
     => 1 x 2 x 3 x 4 x 6 seeds
 Part I : 1 x 2 x 3 x 3 x [RK4, Euler] 2 = 36
 Part II : 1 x 2 x 3 x 3 x [DP5, Tsit5] 2 = 36
 
 Round 2:
-Part I : 1 x 2 x [acyclic, bifurication] x 3 x [RK4, Euler] 2 = 24
-Part II : 1 x 2 x [acyclic, bifurication] x 3 x [DP5, Tsit5] 2 = 24
+Part I : 1 x 2 x [acyclic, bifurcative] x 3 x [RK4, Euler] 2 = 24
+Part II : 1 x 2 x [acyclic, bifurcative] x 3 x [DP5, Tsit5] 2 = 24
 Part III.1-6: cyclic with seed [2, 3, 4, 18, 22, 23] x [RK4, Euler, Tsit5] = 6 x 6
 <----------------------------------------------------------------------------->
 """
@@ -188,7 +188,7 @@ L2_LAMBDA = 1e-4
 
 
 # Main
-for NETWORK_TYPE in ["acyclic", "bifurcating"]
+for NETWORK_TYPE in ["acyclic", "bifurcative"]
     global network_type = NETWORK_TYPE
     for SOLVER in [RK4(), Euler()]
         global solver = SOLVER
