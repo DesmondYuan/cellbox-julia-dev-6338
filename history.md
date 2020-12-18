@@ -9,7 +9,7 @@
         * => pick some sweet spots => ETA per run (Round 1)
     * Round 1 looks all good. Round 2: adding [8, 16, 32]
 
-2. **B1** for sweet spots [FIX network_size(sweet) and num_samples(sweet)]
+2. **B1** `finished` for sweet spots [FIX network_size(sweet) and num_samples(sweet)]
     * `finished` no. of ODE time points [1, 5, 10, 40] +. 1!
         * Round 1 => picked 2m x 2n x 4nT = 16 (Part I-II: 8 + 8), Round 1 has a critical bug and is `deprecated`.
         * Round 2 `nearly finished` `analysis in progress`
